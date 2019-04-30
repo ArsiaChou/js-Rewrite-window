@@ -1,19 +1,15 @@
 (() => {
     const defaultRadius = 5,
         defaultBorderColor = 'rgba(0,0,0,0)',
-        defaultBodyBgc = '#fff',
-        defaultTitleBgc = '#F7F7F7',
+        defaultBodyBgc = '#FFF',
+        defaultTitleBgc = '#F2F2F2',
         defaultTitleColor = '#333',
         defaultContentBgc = '#efefef',
         defaultContentColor = '#000',
         defaultButtonBoxBgc = defaultContentBgc,
         defaultButtonBgc = '#A4D3EE',
         defaultButtonBgcHover = '#93C2DD',
-        defaultButtonColor = '#fff';
-
-    const BGC = 'backgroundColor',
-        BR = 'borderRadius',
-        TA = 'textAlign';
+        defaultButtonColor = '#FFF';
 
     var addElementFunctions = (tag) => {
         tag.setWidth = (width) => {
@@ -97,7 +93,7 @@
             tag.css('transform', 'translateY(' + distance + 'px)')
                 .css('transition', 'transform .5s ease-out');
 
-            setTimeout(() =>{
+            setTimeout(() => {
                 tag.remove();
             }, 500);
         };
@@ -121,7 +117,7 @@
             .setHeight(height + 'px')
             .css('borderRadius', defaultRadius + 'px')
             .css('border', '1px ' + defaultBorderColor + ' solid')
-            .css(BGC, defaultBodyBgc)
+            .css('backgroundColor', defaultBodyBgc)
             .css('overflow', 'hidden')
             .css('display', 'none');
 
@@ -132,9 +128,9 @@
         var titleBox = createElement('div');
 
         titleBox.setWidth('100%')
-            .css(BGC, defaultTitleBgc)
+            .css('backgroundColor', defaultTitleBgc)
             .css('color', defaultTitleColor)
-            .css(TA, 'center')
+            .css('textAlign', 'center')
             .css('fontWeight', 'bold');
 
         titleBox.innerText = title;
@@ -150,9 +146,9 @@
         var content = createElement('div');
 
         content.setWidth('100%')
-            .css(TA, 'center')
+            .css('textAlign', 'center')
             .css('fontWeight', 'normal')
-            .css(BGC, defaultContentBgc)
+            .css('backgroundColor', defaultContentBgc)
             .css('color', defaultContentColor);
 
         content.innerText = message;
@@ -169,16 +165,16 @@
             button = createElement('input');
 
         buttonBox.setWidth('100%')
-            .css(TA, 'center')
-            .css(BGC, defaultButtonBoxBgc);
+            .css('textAlign', 'center')
+            .css('backgroundColor', defaultButtonBoxBgc);
 
         /*
         *   height
         * */
 
-        button.css(BGC, defaultButtonBgc)
+        button.css('backgroundColor', defaultButtonBgc)
             .css('color', defaultButtonColor)
-            .css(BR, defaultRadius + 'px')
+            .css('borderRadius', defaultRadius + 'px')
             .css('border', '1px ' + defaultButtonBgc + ' solid')
             .css('outline', 'none');
 
@@ -186,12 +182,12 @@
         button.value = value;
 
         button.onmouseover = function () {
-            button.css(BGC, defaultButtonBgcHover)
+            button.css('backgroundColor', defaultButtonBgcHover)
                 .css('border', '1px ' + defaultButtonBgcHover + ' solid');
         };
 
         button.onmouseleave = function () {
-            button.css(BGC, defaultButtonBgc)
+            button.css('backgroundColor', defaultButtonBgc)
                 .css('border', '1px ' + defaultButtonBgc + ' solid');
         };
 
@@ -210,13 +206,6 @@
             var body = createBody(400, 200), titleB;
             var content = createContent(message);
             var button = createOneButton('确定');
-
-            /*
-            *
-            position: absolute;
-            top: 60px;
-            left: calc(50% - 200px);
-            * */
 
             body.css('position', 'absolute')
                 .css('top', '60px')
@@ -252,18 +241,17 @@
             body.show();
         };
 
-        window.toast = (message) => {
+        window.toast = (message, time) => {
             var domBody = document.getElementsByTagName('body')[0];
             var box = createElement('div');
-
 
             box.setWidth('200px')
                 .setHeight('35px')
                 .setLineHeight('35px')
-                .css(BGC, 'rgba(0,0,0,0.9)')
+                .css('backgroundColor', 'rgba(0,0,0,0.9)')
                 .css('color', '#fff')
-                .css(TA, 'center')
-                .css(BR, defaultRadius + 'px')
+                .css('textAlign', 'center')
+                .css('borderRadius', defaultRadius + 'px')
                 .css('border', '1px ' + defaultBorderColor + ' solid')
                 .css('display', 'none');
 
@@ -277,6 +265,7 @@
             domBody.appendChild(box);
             box.show();
 
+            time = time || 1000;
             setTimeout(() => {
                 var speed = 0.001, opacity = 0.9;
                 var hideInterval = setInterval(() => {
@@ -290,9 +279,7 @@
                         box.remove();
                     }
                 }, 15);
-            }, 1000);
+            }, time);
         };
     })()
-
-
 })();
