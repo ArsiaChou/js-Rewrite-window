@@ -1,8 +1,8 @@
 (() => {
     /*  一个全局变量，一次只能显示一个*/
-    var isShow = false,
+    var isShow = false;
         /* 用count和number两个计数器来保证多个窗口会按照先后顺序输出 */
-        count = 0, number = 0;
+        // count = 0, number = 0;
 
     /*
 *   原生js又臭又长，又不想依赖jQuery，
@@ -280,6 +280,74 @@
         return buttonBox
     };
 
+    /*
+    *   我无法实现confirm执行时暂停js运行，所以只能将方法扔进来得到选择值
+    * */
+    var createTwoButton = (param, frame, frameHide, select) => {
+        var buttonBox = createElement('div'), buttonl = createElement('input'), buttonr = createElement('input');
+
+        buttonBox.appendChild(buttonl);
+        buttonBox.appendChild(buttonr);
+        buttonBox.setWidth(param.width)
+            .setHeight(param.height)
+            .css('textAlign', param.textAlign)
+            .setBackgroundColor(param.backgroundColor);
+
+
+
+        buttonl.setWidth(param.button.width)
+            .setHeight(param.button.height)
+            .setBackgroundColor(param.button.backgroundColor)
+            .css('outline', param.button.outline)
+            .css('border', param.button.border)
+            .css('borderRadius', param.button.borderRadius)
+            .css('color', param.button.color)
+            .css('marginRight', param.button.marginRight)
+            .value = param.button.valuel;
+        buttonl.type = 'button';
+
+        buttonl.onmouseover = () => {
+            buttonl.setBackgroundColor(param.button.hover.backgroundColor)
+                .css('border', param.button.hover.border)
+        };
+        buttonl.onmouseleave = () => {
+            buttonl.setBackgroundColor(param.button.backgroundColor)
+                .css('border', param.button.border)
+        };
+
+        buttonl.onclick = () => {
+            frame.hide(frameHide);
+            select(false);
+        };
+
+        buttonr.setWidth(param.button.width)
+            .setHeight(param.button.height)
+            .setBackgroundColor(param.button.backgroundColor)
+            .css('outline', param.button.outline)
+            .css('border', param.button.border)
+            .css('borderRadius', param.button.borderRadius)
+            .css('color', param.button.color)
+            .css('marginLeft', param.button.marginLeft)
+            .value = param.button.valuer;
+        buttonr.type = 'button';
+
+        buttonr.onmouseover = () => {
+            buttonr.setBackgroundColor(param.button.hover.backgroundColor)
+                .css('border', param.button.hover.border)
+        };
+        buttonr.onmouseleave = () => {
+            buttonr.setBackgroundColor(param.button.backgroundColor)
+                .css('border', param.button.border)
+        };
+
+        buttonr.onclick = () => {
+            frame.hide(frameHide);
+            select(true);
+        };
+
+        return buttonBox
+    };
+
     (() => {
         /*
         *   一些默认值
@@ -305,7 +373,7 @@
                 fontWeight: 'bold',
                 backgroundColor: 'hsla(0, 0%, 100%, .6)',
                 color: '#333',
-                fontSize: '1.3em',
+                fontSize: '1.2em',
                 text: ''
             },
             ALERT_CONTAINER_CSS = {
@@ -348,16 +416,13 @@
             var frame = createFrame(ALERT_FRAME_CSS), container;
             var body = (document.getElementsByTagName('body'))[0];
 
-            /* 标记 */
-            var countNow = count++;
-            number++;
             /* 一些默认值 */
             ALERT_TITLE_CSS.text = title;
-            ALERT_CONTAINER_CSS.message = message;
+            message===null ? ALERT_CONTAINER_CSS.message = '' : ALERT_CONTAINER_CSS.message = message;
             ALERT_BUTTON_BOX_CSS.button.value = '确定';
 
             /* 有标题 */
-            if (arguments.length === 2) {
+            if (arguments.length >= 2) {
                 ALERT_CONTAINER_CSS.height = ALERT_CONTAINER_CSS.titleHeight;
                 ALERT_CONTAINER_CSS.lineHeight = ALERT_CONTAINER_CSS.titleHeight;
                 var titleBox = createTitle(ALERT_TITLE_CSS);
@@ -366,7 +431,7 @@
                 frame.appendChild(container)
 
                 /* 无标题 */
-            } else if (arguments.length === 1) {
+            } else if (arguments.length <= 1) {
                 ALERT_CONTAINER_CSS.height = ALERT_CONTAINER_CSS.noTitleHeight;
                 ALERT_CONTAINER_CSS.lineHeight = ALERT_CONTAINER_CSS.noTitleHeight;
                 container = createContainer_NoInput(ALERT_CONTAINER_CSS);
@@ -378,19 +443,14 @@
 
             /* 保证窗口一次只显示一个， 并且按顺序输出 */
             var waitShow = setInterval(() => {
-                if (!isShow && countNow === number - count) {
+                if (!isShow) {
                     frame.show();
-                    /* 一次窗口队列输出完毕后， 计数器归零 */
-                    if (count === 0) number = 0;
-                    /* 下一个窗口 */
-                    else count--;
                     clearInterval(waitShow);
                 }
             }, 10);
         };
 
         var TOAST_FRAME_CSS = {
-            // width: '400px',
             height: '40px',
             border: '1px rgba(0,0,0,0) solid',
             borderRadius: '5px',
@@ -399,13 +459,11 @@
             userSelect: 'none',
             display: 'block'
         };
+
         window.toast = (message, time) => {
             /* 创建容器 */
             var frame = createFrame(TOAST_FRAME_CSS);
             var body = (document.getElementsByTagName('body'))[0];
-            /* 标记 */
-            var countNow = count++;
-            number++;
 
             /* 样式初始化 */
             frame.setLineHeight(TOAST_FRAME_CSS.height)
@@ -430,12 +488,8 @@
             time = time || 1000;
             /* 保证窗口一次只显示一个， 并且按顺序输出 */
             var waitShow = setInterval(() => {
-                if (!isShow && countNow === number - count) {
+                if (!isShow) {
                     frame.show();
-                    /* 一次窗口队列输出完毕后， 计数器归零 */
-                    if (count === 0) number = 0;
-                    /* 下一个窗口 */
-                    else count--;
                     clearInterval(waitShow);
                     /* 延时关闭 */
                     setTimeout(()=>{
@@ -444,5 +498,70 @@
                 }
             }, 10);
         };
+
+        var CONFIRM_BUTTON_BOX_CSS = {
+            width: '100%',
+            height: '60px',
+            backgroundColor: 'rgba(255, 255, 255, .8)',
+            textAlign: 'center',
+            button: {
+                width: '100px',
+                height: '40px',
+                outline: 'none',
+                border: '1px #A4D3EE solid',
+                backgroundColor: '#A4D3EE',
+                borderRadius: '5px',
+                color: '#fff',
+                valuel: null,
+                valuer:null,
+                marginLeft: '10px',
+                marginRight:'10px',
+                hover: {
+                    border: '1px #93C2DD solid',
+                    backgroundColor: '#93C2DD'
+                }
+            }
+        };
+
+        window.confirm = function(select, message, title) {
+            /* 主体框架样式上，confirm和alert是相同的,只有按钮是略有不同的所以直接拷贝过来再修改 */
+            /* 创建容器 */
+            var frame = createFrame(ALERT_FRAME_CSS), container;
+            var body = (document.getElementsByTagName('body'))[0];
+
+            /* 一些默认值 */
+            ALERT_TITLE_CSS.text = title;
+            ALERT_CONTAINER_CSS.message = message;
+            CONFIRM_BUTTON_BOX_CSS.button.valuel = '取消';
+            CONFIRM_BUTTON_BOX_CSS.button.valuer = '确定';
+
+            /* 有标题 */
+            if (arguments.length === 3) {
+                ALERT_CONTAINER_CSS.height = ALERT_CONTAINER_CSS.titleHeight;
+                ALERT_CONTAINER_CSS.lineHeight = ALERT_CONTAINER_CSS.titleHeight;
+                var titleBox = createTitle(ALERT_TITLE_CSS);
+                container = createContainer_NoInput(ALERT_CONTAINER_CSS);
+                frame.appendChild(titleBox);
+                frame.appendChild(container)
+
+                /* 无标题 */
+            } else if (arguments.length === 2) {
+                ALERT_CONTAINER_CSS.height = ALERT_CONTAINER_CSS.noTitleHeight;
+                ALERT_CONTAINER_CSS.lineHeight = ALERT_CONTAINER_CSS.noTitleHeight;
+                container = createContainer_NoInput(ALERT_CONTAINER_CSS);
+                frame.appendChild(container);
+            }
+            var buttonBox = createTwoButton(CONFIRM_BUTTON_BOX_CSS, frame, '-270px', select);
+            frame.appendChild(buttonBox);
+            body.appendChild(frame);
+
+            /* 保证窗口一次只显示一个， 并且按顺序输出 */
+            var waitShow = setInterval(() => {
+                if (!isShow) {
+                    frame.show();
+                    clearInterval(waitShow);
+                }
+            }, 10);
+        }
     })();
 })();

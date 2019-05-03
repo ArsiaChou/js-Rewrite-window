@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58dd2fd7-c0bd-4499-bcee-16ba5be58cb4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model/confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/Grassland_Scenery_by_Shi_Yuejun.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image/Grassland_Scenery_by_Shi_Yuejun.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/alert.html" beforeDir="false" afterPath="$PROJECT_DIR$/model/alert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/reWindow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -14,24 +20,42 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reWindow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="446" column="9" lean-forward="true" selection-start-line="446" selection-start-column="9" selection-end-line="446" selection-end-column="9" />
+            <state relative-caret-position="337">
+              <caret line="431" lean-forward="true" selection-start-line="431" selection-end-line="431" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="90">
-                <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-              </first_editor>
-              <second_editor />
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/confirm.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-240">
+              <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/alert.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="930">
+              <caret line="62" column="9" selection-start-line="44" selection-start-column="8" selection-end-line="62" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -52,12 +76,14 @@
       <find>ALERT_</find>
       <find>fontWright</find>
       <find>ALTER_</find>
+      <find>if (count === 0) number = 0;</find>
     </findStrings>
     <replaceStrings>
       <replace>Object;</replace>
       <replace>tag</replace>
       <replace>fontWeight</replace>
       <replace>ALERT_</replace>
+      <replace>//  if (count === 0) number = 0;</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -69,20 +95,11 @@
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/testSetFunctions.js" />
         <option value="$PROJECT_DIR$/test2.html" />
-        <option value="$PROJECT_DIR$/model/alert.html" />
-        <option value="$PROJECT_DIR$/reWindow.js" />
-        <option value="$PROJECT_DIR$/test/test.html" />
         <option value="$PROJECT_DIR$/README.md" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/js-Rewrite-window.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/model/alert.html" />
+        <option value="$PROJECT_DIR$/model/confirm.html" />
+        <option value="$PROJECT_DIR$/test/test.html" />
+        <option value="$PROJECT_DIR$/reWindow.js" />
       </list>
     </option>
   </component>
@@ -100,7 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -113,10 +129,21 @@
               <item name="js-Rewrite-window" type="462c0819:PsiDirectoryNode" />
               <item name="image" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="js-Rewrite-window" type="b2602c69:ProjectViewProjectNode" />
+              <item name="js-Rewrite-window" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="js-Rewrite-window" type="b2602c69:ProjectViewProjectNode" />
+              <item name="js-Rewrite-window" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,12 +188,13 @@
       <workItem from="1556410937759" duration="720000" />
       <workItem from="1556611834092" duration="4930000" />
       <workItem from="1556618222208" duration="602000" />
-      <workItem from="1556684563290" duration="27750000" />
+      <workItem from="1556684563290" duration="30023000" />
+      <workItem from="1556817827816" duration="3467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50376000" />
+    <option name="totallyTimeSpent" value="56116000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1038" extended-state="6" />
@@ -184,7 +212,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.22847682" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.22847682" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -200,37 +228,50 @@
     <entry file="file://$PROJECT_DIR$/image/no-title-alert.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/alert.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="90">
+            <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reWindow.js">
+    <entry file="file://$PROJECT_DIR$/image/toast.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image/title-alert.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/alert.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="446" column="9" lean-forward="true" selection-start-line="446" selection-start-column="9" selection-end-line="446" selection-end-column="9" />
+        <state relative-caret-position="930">
+          <caret line="62" column="9" selection-start-line="44" selection-start-column="8" selection-end-line="62" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/confirm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state relative-caret-position="465">
+          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="90">
-            <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/reWindow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="431" lean-forward="true" selection-start-line="431" selection-end-line="431" />
         </state>
       </provider>
     </entry>
