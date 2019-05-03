@@ -21,24 +21,24 @@
 ## alert
    `alert('message')`
     
-   ![no title](image/no-title-alert.png)
+   ![no title](https://github.com/ArsiaChou/js-Rewrite-window/raw/master/image/no-title-alert.png)
    
    `alert('message', 'title')`
    
-   ![title](image/title-alert.png)
+   ![title](https://github.com/ArsiaChou/js-Rewrite-window/raw/master/image/title-alert.png)
    
    
 ## toast
    `toast('message') or toast('message', 1000)`
    
-   ![toast](image/toast.png)
+   ![toast](https://github.com/ArsiaChou/js-Rewrite-window/raw/master/image/toast.png)
    
 ## confirm
    `confirm(function(select){}, 'message')`
    
-   ![no title](image/no-title-confirm.png)
+   ![no title](https://github.com/ArsiaChou/js-Rewrite-window/raw/master/image/no-title-confirm.png)
    
    `confirm(function(select){}, 'message', 'title')`
    
-   ![no title](image/title-confirm.png)
+   ![no title](https://github.com/ArsiaChou/js-Rewrite-window/raw/master/image/title-confirm.png)
    
