@@ -13,6 +13,10 @@
  - 添加toast
     - toast (message)
     - toast (mesage, time)
+    
+ - confirm重写
+    - confirm(function(select){}, message) 无标题
+    - confirm(function(select){}, message, title) 有标题
 
 ## alert
    `alert('message')`
@@ -28,3 +32,13 @@
    `toast('message') or toast('message', 1000)`
    
    ![toast](image/toast.png)
+   
+## confirm
+   `confirm(function(select){}, 'message')`
+   
+   ![no title](image/no-title-confirm.png)
+   
+   `confirm(function(select){}, 'message', 'title')`
+   
+   ![no title](image/title-confirm.png)
+   
