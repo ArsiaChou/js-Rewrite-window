@@ -3,13 +3,15 @@
     win.tip = {};
     //样式
     win.tip.style = {
+        /* background color */
         bgc: {
             normal: 'rgba(0, 0, 0, .5)',
             error: 'rgba(255, 30, 30, .5)',
             warn: 'rgba(255, 255, 0, .5)',
             success: 'rgba(173, 255, 47, .5)'
         },
-        color: {
+        /* font color */
+        fc: {
             normal: '#FFF',
             error: '#FFF',
             warn: '#FFF',
@@ -17,9 +19,11 @@
             close: '#FFF'
         },
         body: {
-            float: 'right',
             padding: '10px',
-            margin: '10px 20px 0 0'
+            top: '10px',
+            right: '20px',
+            bottom: '',
+            left: '',
         }
     };
     //部件创建
@@ -33,6 +37,11 @@
             $body.style.border = '1px rgba(0,0,0,0) solid';
             $body.style.borderRadius = '5px';
             $body.style.userSelect = 'none';
+            $body.style.position = 'absolute';
+            $body.style.top = win.tip.style.body.top;
+            $body.style.right = win.tip.style.body.right;
+            $body.style.bottom = win.tip.style.body.bottom;
+            $body.style.left = win.tip.style.body.left;
             return $body;
         },
         close: () => {
@@ -42,14 +51,14 @@
             $close.innerText = '×';
             $close.style.fontSize = '1.4em';
             $close.style.fontWeight = 'bold';
-            $close.style.color = win.tip.style.color.close;
+            $close.style.color = win.tip.style.fc.close;
             $close.style.cursor = 'pointer';
             return $close;
         },
         title: (title) => {
             var $title = document.createElement('div');
             $title.innerText = title;
-            $title.style.fontSize = '1.2em';
+            $title.style.fontSize = '1.1em';
             $title.style.fontWeight = 'bold';
             $title.style.float = 'left';
             return $title;
@@ -63,6 +72,31 @@
             return $connect;
         }
     };
+    //alert 状态选择
+    var alertType = function($body, type) {
+        type = typeof type === 'undefined'?'normal':type;
+        switch (type) {
+            case 'normal':
+                $body.style.backgroundColor = win.tip.style.bgc.normal;
+                $body.style.color = win.tip.style.fc.normal;
+                break;
+            case 'error':
+                $body.style.backgroundColor = win.tip.style.bgc.error;
+                $body.style.color = win.tip.style.fc.error;
+                break;
+            case 'warn':
+                $body.style.backgroundColor = win.tip.style.bgc.warn;
+                $body.style.color = win.tip.style.fc.warn;
+                break;
+            case 'success':
+                $body.style.backgroundColor = win.tip.style.bgc.success;
+                $body.style.color = win.tip.style.fc.success;
+                break;
+            default:
+                $body.style.backgroundColor = win.tip.style.bgc.normal;
+                $body.style.color = win.tip.style.fc.normal;
+        }
+    };
     //alert
     win.tip.alert = (message, title, type, time) => {
         title = typeof title === 'undefined'?' ':title;
@@ -73,28 +107,7 @@
             $close = subgroup.close(),
             $content = subgroup.content(message);
 
-        type = typeof type === 'undefined'?'normal':type;
-        switch (type) {
-            case 'normal':
-                $body.style.backgroundColor = win.tip.style.bgc.normal;
-                $body.style.color = win.tip.style.color.normal;
-                break;
-            case 'error':
-                $body.style.backgroundColor = win.tip.style.bgc.error;
-                $body.style.color = win.tip.style.color.error;
-                break;
-            case 'warn':
-                $body.style.backgroundColor = win.tip.style.bgc.warn;
-                $body.style.color = win.tip.style.color.warn;
-                break;
-            case 'success':
-                $body.style.backgroundColor = win.tip.style.bgc.success;
-                $body.style.color = win.tip.style.color.success;
-                break;
-            default:
-                $body.style.backgroundColor = win.tip.style.bgc.normal;
-                $body.style.color = win.tip.style.color.normal;
-        }
+        alertType($body, type);
 
         $up.style.clear = 'both';
         $up.append($title);
@@ -103,21 +116,46 @@
         $body.append($content);
 
         //关闭事件
+        var closeClick = false;
         $close.onclick = function () {
-            $body.remove();
+           if (!closeClick) {
+               //淡出
+               closeClick = true;
+               var opacity = 1, speed = 0.01;
+               var alertFadeOut = setInterval(() => {
+                   opacity -= speed;
+                   speed += 0.03;
+                   $body.style.opacity = opacity;
+                   if (opacity <= 0) {
+                       $body.style.opacity = 0;
+                       clearInterval(alertFadeOut);
+                   }
+               }, 20);
+           }
         };
         $close.onmousemove = function() {
-            $close.style.color = 'red';
+            $close.style.color = '#FF0030';
         };
         $close.onmouseleave = function() {
             $close.style.color = '#FFF';
         };
+        //淡入
+        document.body.append($body);
+        $body.style.opacity = 0;
+        var opacity = 0, speed = 0.01;
+        var alertFadeIn = setInterval(() => {
+            opacity += speed;
+            speed += 0.03;
+            $body.style.opacity = opacity;
+            if (opacity >= 1) {
+                $body.style.opacity = 1;
+                clearInterval(alertFadeIn);
+            }
+        }, 20);
         //延时自动关闭
-        time = typeof title === 'undefined'?2000:time;
+        time = typeof title === 'undefined'?2000:time+50;
         setTimeout(() => {
             $close.click();
         }, time);
-        //加入网页
-        document.body.prepend($body);
     };
 })(window);

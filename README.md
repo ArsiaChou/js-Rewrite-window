@@ -12,14 +12,16 @@ tip.alert(message, title, type, time);
 ### 修改默认样式
 ```javascript
 //使用前修改
-tip.style = {
+win.tip.style = {
+        /* background color */
         bgc: {
             normal: 'rgba(0, 0, 0, .5)',
             error: 'rgba(255, 30, 30, .5)',
             warn: 'rgba(255, 255, 0, .5)',
             success: 'rgba(173, 255, 47, .5)'
         },
-        color: {
+        /* font color */
+        fc: {
             normal: '#FFF',
             error: '#FFF',
             warn: '#FFF',
@@ -27,9 +29,11 @@ tip.style = {
             close: '#FFF'
         },
         body: {
-            float: 'right',
             padding: '10px',
-            margin: '10px 20px 0 0'
+            top: '10px',
+            right: '20px',
+            bottom: '',
+            left: '',
         }
     };
 ```
