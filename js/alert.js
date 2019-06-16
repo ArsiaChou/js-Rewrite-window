@@ -28,9 +28,10 @@
     };
     //部件创建
     var subgroup = {
-        body: (width) => {
+        body: (iwidth, awidth) => {
             var $body = document.createElement('div');
-            $body.style.width = width;
+            $body.style.minWidth = iwidth;
+            $body.style.maxWidth = awidth
             $body.style.padding = win.tip.style.body.padding;
             $body.style.margin = win.tip.style.body.margin;
             $body.style.float = win.tip.style.body.float;
@@ -101,7 +102,7 @@
     win.tip.alert = (message, title, type, time) => {
         title = typeof title === 'undefined'?' ':title;
         message = typeof message === 'undefined'?' ':message;
-        var $body = subgroup.body('200px'),
+        var $body = subgroup.body('200px', '500px'),
             $up = document.createElement('div'),
             $title = subgroup.title(title),
             $close = subgroup.close(),
@@ -158,4 +159,8 @@
             $close.click();
         }, time);
     };
+    //toast
+    win.tip.toast = (message, time) =>{
+        message = typeof message == 'undefined'?'':message
+    }
 })(window);
