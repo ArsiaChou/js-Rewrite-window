@@ -38,4 +38,4 @@ win.tip.style = {
     };
 ```
 ### 效果展示
-[normal](image/normal.png) [warn](image/warn.png) [error](image/error.png) [success](image/success.png)
+![normal](image/normal.png) ![warn](image/warn.png) ![error](image/error.png) ![success](image/success.png)
