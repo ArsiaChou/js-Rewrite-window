@@ -1,5 +1,10 @@
 # js-alert
 
+
+### 效果展示
+![normal](image/normal.png)         ![warn](image/warn.png) 
+![error](image/error.png)           ![success](image/success.png)
+
 ### alert 使用
 ```javascript
 tip.alert(message, title, type, time);
@@ -37,5 +42,3 @@ win.tip.style = {
         }
     };
 ```
-### 效果展示
-![normal](image/normal.png) ![warn](image/warn.png) ![error](image/error.png) ![success](image/success.png)
