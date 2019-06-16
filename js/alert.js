@@ -153,7 +153,7 @@
             }
         }, 20);
         //延时自动关闭
-        time = typeof title === 'undefined'?2000:time+50;
+        time = typeof time === 'undefined'?2000:time+50;
         setTimeout(() => {
             $close.click();
         }, time);

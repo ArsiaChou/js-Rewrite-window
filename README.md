@@ -17,7 +17,7 @@ tip.alert(message, title, type, time);
 ### 修改默认样式
 ```javascript
 //使用前修改
-win.tip.style = {
+tip.style = {
         /* background color */
         bgc: {
             normal: 'rgba(0, 0, 0, .5)',
