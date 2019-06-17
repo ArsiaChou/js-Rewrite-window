@@ -1,14 +1,19 @@
 (function (win) {
     //调用接口
-    win.tip = {};
+    win.tip = {
+        alert: null,
+        toast: null,
+        style: {},
+        state: {}
+    };
     //样式
     win.tip.style = {
         /* background color */
         bgc: {
-            normal: 'rgba(0, 0, 0, .5)',
-            error: 'rgba(255, 30, 30, .5)',
-            warn: 'rgba(255, 255, 0, .5)',
-            success: 'rgba(173, 255, 47, .5)'
+            normal: 'rgba(0, 0, 0, .8)',
+            error: 'rgba(255, 30, 30, .8)',
+            warn: 'rgba(255,204,7,0.8)',
+            success: 'rgba(102, 205, 0, .8)'
         },
         /* font color */
         fc: {
@@ -99,6 +104,7 @@
         }
     };
     //alert
+    win.tip.state.show = false;
     win.tip.alert = (message, title, type, time) => {
         title = typeof title === 'undefined'?' ':title;
         message = typeof message === 'undefined'?' ':message;
@@ -129,7 +135,9 @@
                    $body.style.opacity = opacity;
                    if (opacity <= 0) {
                        $body.style.opacity = 0;
+                       $body.remove();
                        clearInterval(alertFadeOut);
+                       win.tip.state.show = false;
                    }
                }, 20);
            }
@@ -141,23 +149,30 @@
             $close.style.color = '#FFF';
         };
         //淡入
-        document.body.append($body);
-        $body.style.opacity = 0;
-        var opacity = 0, speed = 0.01;
-        var alertFadeIn = setInterval(() => {
-            opacity += speed;
-            speed += 0.03;
-            $body.style.opacity = opacity;
-            if (opacity >= 1) {
-                $body.style.opacity = 1;
-                clearInterval(alertFadeIn);
+        var showAlert = setInterval(() => {
+            //只显示一个
+            if (!win.tip.state.show) {
+                win.tip.state.show = true;
+                clearInterval(showAlert);
+                document.body.append($body);
+                $body.style.opacity = 0;
+                var opacity = 0, speed = 0.01;
+                var alertFadeIn = setInterval(() => {
+                    opacity += speed;
+                    speed += 0.03;
+                    $body.style.opacity = opacity;
+                    if (opacity >= 1) {
+                        $body.style.opacity = 1;
+                        clearInterval(alertFadeIn);
+                        //延时自动关闭
+                        time = typeof time === 'undefined'?2000:time+50;
+                        setTimeout(() => {
+                            $close.click();
+                        }, time);
+                    }
+                }, 20);
             }
-        }, 20);
-        //延时自动关闭
-        time = typeof time === 'undefined'?2000:time+50;
-        setTimeout(() => {
-            $close.click();
-        }, time);
+        }, 10);
     };
     //toast
     win.tip.toast = (message, time) =>{
